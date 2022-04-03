@@ -1,0 +1,6 @@
+.sketch-grid{
+    border-style: solid;
+    display: grid;
+    width: 750px;
+    height: 500px;
+}
