@@ -7,16 +7,17 @@
     <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
-<body>
+<body ondragstart="return false;" ondrop="return false;">
     <h1>Sketchpad</h1>
     <div class="sketch-grid">             
     </div>
     <div class="buttons-for-grid">
-        <input type="" name="" id="sizeGrid" placeholder="Size of the grid">
-        <button onclick="onClick(this)">Create new grid</button>
+        <button onclick="startAgain()">Create new grid</button>
         <button id="black" class="color-btn" onclick="colorSquare()">Black</button>
         <button id="rColor" class="color-btn"onclick="colorSquare()">Random color painting!</button>
         <button id="white" class="color-btn"onclick="colorSquare()">Eraser</button>
     </div>
+    <label for="slider">16 x 16</label>
+    <input type="range" id="slider" min="10" max="100" value="16" oninput=slide()>
 </body>
 </html>

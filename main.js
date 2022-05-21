@@ -2,9 +2,25 @@ let sketchGrid = document.querySelector(".sketch-grid");
 let gridSquares;
 let isDrawing = false;
 let colorPicked = "black";
+let gridSize = 16;
+
+
+/*console.log(slider.value);
+slider.addEventListener("change", () => {
+    //console.log(slider.value);
+    gridSize = slider.value; // esto me esta dando el valor del slider
+});
+*/
+
+function slide() {
+    let slider = document.getElementById("slider");
+    document.querySelectorAll("label")[0].innerText = slider.value + " x " + slider.value;
+    gridSize = slider.value;
+    // startAgain(); Esto es para que se cree la grilla altiro
+  }
 
 //Initiliazing grid state
-populateGrid(16);
+populateGrid(gridSize);
 colorSquare(colorPicked)
 
 buttons = document.querySelectorAll(".color-btn");
@@ -14,6 +30,8 @@ buttons.forEach((button) => {
         colorSquare(colorPicked)
     })
 })
+
+
 
 function changeColor(colorID) {
     colorPicked = colorID;
@@ -60,8 +78,11 @@ function resetGrid() {
     colorPicked = "black";
 }
 
-function onClick($this) {
-    let val = $this.previousElementSibling.value;
+function startAgain() {
+    resetGrid();
+    populateGrid(gridSize);
+    colorSquare(colorPicked)
+    /*let val = $this.previousElementSibling.value;
     if (val === '0' || val >= 50) { //si es 0 o mayor a 100, no deberia crear la grilla
         console.log('no input');//Poner mensaje que no se puede generar la grilla
     } else { // si es valido el tamaño, generar la grilla, o sea, correr populateGrid
@@ -70,6 +91,7 @@ function onClick($this) {
         populateGrid(val);
         colorSquare(colorPicked)
     }
+    */
 }
 
 
