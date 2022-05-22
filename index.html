@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,27 @@
     <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
+
 <body ondragstart="return false;" ondrop="return false;">
     <h1>Sketchpad</h1>
-    <div class="sketch-grid">             
+    <div class="sketchpad">
+        <div class="buttons-for-grid">
+            <button id="black" class="color-btn active" onclick="colorSquare()">Black</button>
+            <button id="rColor" class="color-btn" onclick="colorSquare()">Rainbow mode</button>
+            <button id="white" class="color-btn" onclick="colorSquare()">Eraser</button>
+            <button onclick="clearGrid()">Clear</button>
+        </div>
+        <div class="sketch-grid">
+        </div>
     </div>
-    <div class="buttons-for-grid">
-        <button onclick="startAgain()">Create new grid</button>
-        <button id="black" class="color-btn" onclick="colorSquare()">Black</button>
-        <button id="rColor" class="color-btn"onclick="colorSquare()">Random color painting!</button>
-        <button id="white" class="color-btn"onclick="colorSquare()">Eraser</button>
+    <div class="slider-section">
+        <label for="slider">Grid size 16 x 16</label>
+        <input type="range" id="slider" min="10" max="50" value="16" oninput=slide()>
+        <button onclick="startAgain()">Create grid</button>
     </div>
-    <label for="slider">16 x 16</label>
-    <input type="range" id="slider" min="10" max="100" value="16" oninput=slide()>
+    <div class="footer">
+        <p>Copyright Ⓒ 2022 Sifgard</p>
+    </div>
 </body>
+
 </html>
