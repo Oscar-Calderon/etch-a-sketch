@@ -13,9 +13,9 @@
     <h1>Sketchpad</h1>
     <div class="sketchpad">
         <div class="buttons-for-grid">
-            <button id="black" class="color-btn active" onclick="colorSquare()">Black</button>
-            <button id="rColor" class="color-btn" onclick="colorSquare()">Rainbow mode</button>
-            <button id="white" class="color-btn" onclick="colorSquare()">Eraser</button>
+            <button id="black" class="color-btn active" onclick="changeColor()">Black</button>
+            <button id="rColor" class="color-btn" onclick="changeColor()">Rainbow mode</button>
+            <button id="white" class="color-btn" onclick="changeColor()">Eraser</button>
             <button onclick="clearGrid()">Clear</button>
         </div>
         <div class="sketch-grid">
@@ -23,7 +23,7 @@
     </div>
     <div class="slider-section">
         <label for="slider">Grid size 16 x 16</label>
-        <input type="range" id="slider" min="10" max="50" value="16" oninput=slide()>
+        <input type="range" id="slider" min="10" max="69" value="16" oninput=slide()>
         <button onclick="startAgain()">Create grid</button>
     </div>
     <div class="footer">

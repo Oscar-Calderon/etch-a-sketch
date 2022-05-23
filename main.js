@@ -2,6 +2,8 @@ let sketchGrid = document.querySelector(".sketch-grid");
 let body = document.body;
 let gridSquares;
 let isDrawing = false;
+body.onmousedown = () => (isDrawing = true)
+body.onmouseup = () => (isDrawing = false)
 let colorPicked = "black";
 let gridSize = 16;
 
@@ -17,12 +19,11 @@ populateGrid(gridSize);
 
 buttons = document.querySelectorAll(".color-btn");
 buttons.forEach((button) => {
-    button.addEventListener("click", clickButton)
+    button.addEventListener("click", clickButton)    
 });
 
 function clickButton(e) {
     changeColor(e.target.id)
-    colorSquare(colorPicked)
     buttons.forEach((button) => button.classList.remove("active"));
     e.target.classList.add("active");
 };
@@ -32,26 +33,15 @@ function changeColor(colorID) {
     colorPicked = colorID;
 };
 
-function colorSquare(color) {
-    gridSquares.forEach((square) => {
-        square.addEventListener("mousedown", () => {
-            isDrawing = true;
-        });
-        square.addEventListener("mouseover", () => {
-            if (isDrawing === true) {
-                if (color === 'rColor') {
-                    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-                    square.style.backgroundColor = "#" + randomColor;
-                }
-                else {
-                    square.style.backgroundColor = color;
-                }
-            }
-        });
-        body.addEventListener("mouseup", () => {
-            isDrawing = false;
-        });
-    });
+function colorSquare(e) {
+    if (!isDrawing) return
+    if (colorPicked === 'rColor') {
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        e.target.style.backgroundColor = "#" + randomColor;
+    }
+    else {
+        e.target.style.backgroundColor = colorPicked;
+    }
 };
 
 function populateGrid(size) {
@@ -60,10 +50,10 @@ function populateGrid(size) {
     for (let i = 0; i < (size * size); i++) {
         let div = document.createElement("div");
         div.classList.add("square")
+        div.addEventListener("mouseover", colorSquare)
         sketchGrid.appendChild(div);
     }
-    gridSquares = document.querySelectorAll(".square");
-    colorSquare(colorPicked);
+    gridSquares = document.querySelectorAll(".square");  
 };
 
 function clearGrid() {
@@ -78,5 +68,3 @@ function startAgain() {
     }
     populateGrid(gridSize);
 };
-
-// Solucionar tema event listeners y funcion colorSquare. Laguea el pc porque se agregan cada vez que clickeas un boton
