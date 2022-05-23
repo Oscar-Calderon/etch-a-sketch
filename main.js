@@ -8,19 +8,16 @@ let colorPicked = "black";
 let gridSize = 16;
 
 
+buttons = document.querySelectorAll(".color-btn");
+buttons.forEach((button) => {
+    button.addEventListener("click", clickButton)    
+});
+
 function slide() {
     let slider = document.getElementById("slider");
     document.querySelectorAll("label")[0].innerText = "Grid size " + slider.value + " x " + slider.value;
     gridSize = slider.value;
 };
-
-//Initiliazing grid state
-populateGrid(gridSize);
-
-buttons = document.querySelectorAll(".color-btn");
-buttons.forEach((button) => {
-    button.addEventListener("click", clickButton)    
-});
 
 function clickButton(e) {
     changeColor(e.target.id)
@@ -68,3 +65,6 @@ function startAgain() {
     }
     populateGrid(gridSize);
 };
+
+//Initiliazing grid state
+populateGrid(gridSize);
