@@ -2,10 +2,6 @@
 
 Etch-a-sketch project using DOM manipulation. Created using HTML, JS and CSS (grid and flexbox)
 
-# Credits
-
-This was a project required by The Odin Project curriculum. 
-
 # What did I learn
 
 I learned to manipulate the DOM and create a website that had a lot of functionality behind with event listeners.
